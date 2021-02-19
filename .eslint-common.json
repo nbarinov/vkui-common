@@ -2,6 +2,7 @@
   "extends": [
     "@vkontakte/eslint-config/typescript/react"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaVersion": 6,
@@ -12,6 +13,9 @@
       "spread": true
     }
   },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "env": {
     "browser": true,
     "node": true
