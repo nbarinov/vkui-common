@@ -1,6 +1,10 @@
 const path = require('path');
 
-module.exports = (mode = 'development') => {
+/**
+ * @param {'production'|'development'} mode
+ * @param {Boolean} isLegacy
+ */
+module.exports = (mode = 'development', isLegacy = false) => {
   const isEnvProduction = mode === 'production';
 
   const plugins = [[
@@ -29,11 +33,16 @@ module.exports = (mode = 'development') => {
     }], [
     require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'), {
       loose: true,
-    }], [
-    require.resolve('fast-async'), {
-      spec: true,
-    }]
+    }],
   ];
+
+  if (!isLegacy) {
+    plugins.push([
+      require.resolve('fast-async'), {
+        spec: true,
+      }
+    ]);
+  }
 
   if (isEnvProduction) {
     plugins.push([

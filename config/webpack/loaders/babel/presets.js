@@ -2,10 +2,11 @@ const targets = require('../../../targets');
 
 /**
  * @param {'production'|'development'} mode
+ * @param {Boolean} isLegacy
  */
-module.exports = (mode = 'development', legacy = false) => {
+module.exports = (mode = 'development', isLegacy = false) => {
   const isEnvProduction = mode === 'production';
-  const target = legacy ? 'legacy' : 'modern';
+  const target = isLegacy ? 'legacy' : 'modern';
 
   return [[
     require.resolve('@babel/preset-env'), {
@@ -18,7 +19,7 @@ module.exports = (mode = 'development', legacy = false) => {
         version: '3.8',
         proposals: false
       },
-      exclude: [
+      exclude: isLegacy ? [] : [
         'transform-typeof-symbol',
         'transform-regenerator',
         'transform-async-to-generator'
