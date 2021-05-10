@@ -27,7 +27,7 @@ module.exports = (mode = 'development') => {
       inject: 'body',
       scriptLoading: 'defer',
       chunksSortMode: 'none',
-      template: paths.appTemplate,
+      template: paths.appHtml,
       minify: isEnvProduction,
     })
   );
