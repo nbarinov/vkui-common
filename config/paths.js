@@ -38,6 +38,6 @@ module.exports = {
   appTsConfig: resolveApp('tsconfig.json'),
   appExclude: resolveModule(resolveApp, 'babel.exclude', configFileExtensions),
   appNodeModules: resolveApp('node_modules'),
-  publicUrlOrPath: '/',
+  publicUrlOrPath: './',
   moduleFileExtensions,
 };

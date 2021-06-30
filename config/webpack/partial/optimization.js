@@ -91,7 +91,7 @@ module.exports = (mode = 'development', isLegacy = false) => {
         },
       }),
       new CSSMinimizerPlugin({
-        sourceMap: false,
+        parallel: true,
         minimizerOptions: {
           preset: ['default', {
             minifyFontValues: {
